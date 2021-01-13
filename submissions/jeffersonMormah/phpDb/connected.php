@@ -2,16 +2,16 @@
 
 class Connected {
 
-    private $host = "localhost";
-    private $user = "root";
-    private $pwd = "mysql";
-    private $dbName = "ebekelchemicalz";
+     $host = "localhost";
+     $user = "root";
+     $pwd = "mysql";
+     $dbName = "ebekelchemicalz";
 
-    protected function connect ()  {
+     function connect()  {
 
        try {
-            $dsn = 'mysql:host=' . $this->host . ';dbname=' .  $this->dbName;
-        $pdo = new PDO($dsn, $this->user, $this->pwd);
+        $dbase = 'mysql:host=' . $this->host . ';dbname=' .  $this->dbName;
+        $pdo = new PDO($dbase, $this->user, $this->pwd);
         $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

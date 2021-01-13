@@ -4,25 +4,25 @@ require_once("connected.php");
 class DbQuery extends Connected
 {
 
-    public function storeData($name, $value, $expire)
+     function saveData($name, $value, $expire)
     {
         setcookie($name, serialize($value), $expire);
     }
 
-    public function removeData($name)
+     function delData($name)
     {
         setcookie($name, "", time() - 60);
     }
 
-    public function getAllCustomers()
+     function getAllCustomers()
     {
         try {
             $sql = "SELECT * FROM customerz";
             $stmt  = $this->connect()->query($sql);
             $results = $stmt->fetchAll();
 
-            // store in cookie
-            $this->storeData('customerz', $results, time() + 3600);
+            // save session in cookie
+            $this->saveData('customerz', $results, time() + 7200);
             return $results;
         } catch (PDOException $e) {
             die("ERROR: Could not execute $sql. " . $e->getMessage());
